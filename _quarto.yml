@@ -6,12 +6,25 @@ project:
 
 website:
   title: "Visit London"
+  site-url: https://thepibe.github.io/london-guide
+  back-to-top-navigation: true
   navbar:
+    background: primary
     left:
       - text: Guide
         href: london.qmd
       - text: Dashboard
         href: london-dashboard.qmd
+      - text: Materials
+        menu:
+          - text: All materials
+            href: materials.qmd
+          - text: Partner email brief (.docx)
+            href: london-email.docx
+          - text: Flyer (PDF)
+            href: london-flyer.pdf
+          - text: Social post (PDF)
+            href: london-social.pdf
       - text: Downloads
         menu:
           - text: Word (.docx)
@@ -24,8 +37,16 @@ website:
             href: london.epub
           - text: Slides (HTML)
             href: london-slides.html
+    tools:
+      - icon: github
+        href: https://github.com/ThePibe/london-guide
+        aria-label: Source on GitHub
+  page-footer:
+    center: "Visitor numbers from ALVA · Photos credited where shown"
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [flatly, custom.scss]
+      dark: [darkly, custom.scss]
     toc: true

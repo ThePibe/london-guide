@@ -1,0 +1,59 @@
+---
+title: "Materials"
+subtitle: "An email brief, a flyer and a social post, ready to share"
+toc: false
+---
+
+::: {.cards}
+::: {.lg-card}
+::: {.thumb}
+<span class="icon"><i class="bi bi-envelope-paper"></i></span>
+:::
+::: {.body}
+### Partner email brief
+Why London, five sights with official links, getting around, and sources. Attach it to an email.
+
+::: {.actions}
+[Download .docx](london-email.docx)
+:::
+:::
+:::
+
+::: {.lg-card}
+::: {.thumb}
+<img class="cover" src="images/previews/flyer.png" alt="Preview of the Visit London flyer">
+:::
+::: {.body}
+### Flyer {#flyer-card}
+A5 flyer with the five sights, price bands and nearest tube stations.
+
+::: {.actions}
+[Download PDF](london-flyer.pdf)
+[Preview](#flyer){.alt}
+:::
+:::
+:::
+
+::: {.lg-card}
+::: {.thumb}
+<img src="images/previews/social.png" alt="Preview of the Visit London social media post">
+:::
+::: {.body}
+### Social post {#social-card}
+Square post highlighting London's most visited attraction in 2025.
+
+::: {.actions}
+[Download PDF](london-social.pdf)
+[Preview](#social-post){.alt}
+:::
+:::
+:::
+:::
+
+## Flyer {#flyer}
+
+<iframe class="viewer" src="london-flyer.pdf" title="Visit London flyer"></iframe>
+
+## Social post {#social-post}
+
+<iframe class="viewer" src="london-social.pdf" title="Visit London social media post"></iframe>
