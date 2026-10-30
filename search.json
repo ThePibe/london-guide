@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Materials",
+    "section": "",
+    "text": "Why London, five sights with official links, getting around, and sources. Attach it to an email.\n\nDownload .docx\n\n\n\n\n\n\n\n\n\nA5 flyer with the five sights, price bands and nearest tube stations.\n\nDownload PDF Preview\n\n\n\n\n\n\n\n\n\nSquare post highlighting London’s most visited attraction in 2025.\n\nDownload PDF Preview"
+  },
+  {
+    "objectID": "materials.html#flyer",
+    "href": "materials.html#flyer",
+    "title": "Materials",
+    "section": "Flyer",
+    "text": "Flyer"
+  },
+  {
+    "objectID": "materials.html#social-post",
+    "href": "materials.html#social-post",
+    "title": "Materials",
+    "section": "Social post",
+    "text": "Social post"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Visit London",
+    "section": "",
+    "text": "A city where centuries of history sit side by side with modern life.\n\nRead the guide Explore the data Get the materials\n\nBig Ben in the sun. Photo: John Dillenbeck, CC0, via Wikimedia Commons."
+  },
+  {
+    "objectID": "index.html#everything-in-one-place",
+    "href": "index.html#everything-in-one-place",
+    "title": "Visit London",
+    "section": "Everything in one place",
+    "text": "Everything in one place\n\n\n\n\n\n\nThe guide\nFive sights to start with, how to get around, and what to pack. Also as Word, PDF, PowerPoint, EPUB and slides.\n\nRead online Slides\n\n\n\n\n\n\n\n\nThe dashboard\nVisitor numbers for London’s most-visited attractions, and how they have recovered since 2019.\n\nOpen dashboard\n\n\n\n\n\n\n\n\nPartner materials\nA partner email brief, a printable flyer and a social post, ready to send or share.\n\nSee all materials\n\n\n\n\nVisitor numbers are from the Association of Leading Visitor Attractions (ALVA)."
+  },
+  {
+    "objectID": "london-slides.html#five-sights-to-start-with",
+    "href": "london-slides.html#five-sights-to-start-with",
+    "title": "Visit London",
+    "section": "Five sights to start with",
+    "text": "Five sights to start with\n\nBritish Museum\nNatural History Museum\nTate Modern\nNational Gallery\nTower of London\n\n\n\n\nThe glass roof of the Great Court above the Reading Room at the British Museum\n\n\nBritish Museum, Great Court. Photo: Mike Peel (www.mikepeel.net), CC BY-SA 4.0, via Wikimedia Commons.\n\n\n\nThe empty Central Hall of the Natural History Museum, looking towards the blue whale skeleton\n\n\nNatural History Museum, Central Hall. Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons.\n\n\n\nThe tall brick chimney of the former Bankside Power Station, now Tate Modern\n\n\nTate Modern, the former Bankside Power Station. Photo: Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.\n\n\n\nThe glass dome above the entrance hall of the National Gallery\n\n\nNational Gallery, entrance hall dome. Photo: Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.\n\n\n\nA turret and weathervane of the White Tower at the Tower of London\n\n\nTower of London, the White Tower. Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons."
+  },
+  {
+    "objectID": "london-slides.html#sights-at-a-glance",
+    "href": "london-slides.html#sights-at-a-glance",
+    "title": "Visit London",
+    "section": "Sights at a glance",
+    "text": "Sights at a glance\n\n\n\nPhoto\nSight\nArea\nPrice band\nNearest tube\nMore\n\n\n\n\n\nBritish Museum\nBloomsbury\nFree (special exhibitions extra)\nTottenham Court Road\nRead more\n\n\n\nNatural History Museum\nSouth Kensington\nFree (special exhibitions extra)\nSouth Kensington\nRead more\n\n\n\nTate Modern\nBankside\nFree (special exhibitions extra)\nBlackfriars\nRead more\n\n\n\nNational Gallery\nTrafalgar Square\nFree (special exhibitions extra)\nCharing Cross\nRead more\n\n\n\nTower of London\nTower Hill\nPaid ticket\nTower Hill\nRead more\n\n\n\nPhoto credits: British Museum, Mike Peel, CC BY-SA 4.0; Natural History Museum, Julian Herzog, CC BY 4.0; Tate Modern and National Gallery, Diego Delso, CC BY-SA 4.0; Tower of London, Dietmar Rabich, CC BY-SA 4.0. All via Wikimedia Commons; details in images/ATTRIBUTION.md."
+  },
+  {
+    "objectID": "london-slides.html#visitor-numbers",
+    "href": "london-slides.html#visitor-numbers",
+    "title": "Visit London",
+    "section": "Visitor numbers",
+    "text": "Visitor numbers\n\nimport csv\n\nwith open(\"data/attractions.csv\", newline=\"\", encoding=\"utf-8\") as f:\n    rows = list(csv.DictReader(f))\n\ntop = max(rows, key=lambda r: int(r[\"visits_2025\"]))\ntop_name = top[\"attraction\"]\ntop_visits = int(top[\"visits_2025\"])\ntotal_visits = sum(int(r[\"visits_2025\"]) for r in rows)\n\nThe most visited attraction in 2025 was the Natural History Museum (South Kensington), with 7,116,929 visits, out of 39,692,434 visits in total across the ten attractions listed.\n\n\n\n\n\n\n\n\nFigure 1: Visits in 2025 to London’s ten most-visited ALVA attractions. Source: ALVA."
+  },
+  {
+    "objectID": "london-slides.html#getting-around",
+    "href": "london-slides.html#getting-around",
+    "title": "Visit London",
+    "section": "Getting around",
+    "text": "Getting around\n\n🚇 Tube\n🚌 Bus\n🚲 Santander Cycles"
+  },
+  {
+    "objectID": "london-slides.html#plan-your-visit",
+    "href": "london-slides.html#plan-your-visit",
+    "title": "Visit London",
+    "section": "Plan your visit",
+    "text": "Plan your visit\nUse the TfL Journey Planner to map out each day’s route by Tube, bus or bike.\n\nBig Ben and the Elizabeth Tower rising against a bright sky, with the Palace of Westminster belowBig Ben in the sun (Elizabeth Tower). Photo: John Dillenbeck, CC0, via Wikimedia Commons.\n\nTip from a local: Stand on the right on Tube escalators and leave the left side clear for people in a hurry."
+  },
+  {
+    "objectID": "london-slides.html#before-you-go",
+    "href": "london-slides.html#before-you-go",
+    "title": "Visit London",
+    "section": "Before you go",
+    "text": "Before you go\n[ ] Check opening times and book any timed tickets\n[ ] Bring a contactless card or Oyster for the Tube and buses\n[ ] Pack a light waterproof jacket"
+  },
+  {
+    "objectID": "london.html",
+    "href": "london.html",
+    "title": "Visit London",
+    "section": "",
+    "text": "Welcome to London, a city where centuries of history sit side by side with modern life. Whether you’re wandering along the Thames, exploring world-class museums, or simply enjoying a pint in a cosy pub, you’ll find that there is something for every traveller around each corner."
+  },
+  {
+    "objectID": "london.html#five-sights-to-start-with",
+    "href": "london.html#five-sights-to-start-with",
+    "title": "Visit London",
+    "section": "Five sights to start with",
+    "text": "Five sights to start with\n\nBritish Museum\nNatural History Museum\nTate Modern\nNational Gallery\nTower of London\n\n\n\n\nThe glass roof of the Great Court above the Reading Room at the British Museum\n\n\nBritish Museum, Great Court. Photo: Mike Peel (www.mikepeel.net), CC BY-SA 4.0, via Wikimedia Commons.\n\n\n\nThe empty Central Hall of the Natural History Museum, looking towards the blue whale skeleton\n\n\nNatural History Museum, Central Hall. Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons.\n\n\n\nThe tall brick chimney of the former Bankside Power Station, now Tate Modern\n\n\nTate Modern, the former Bankside Power Station. Photo: Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.\n\n\n\nThe glass dome above the entrance hall of the National Gallery\n\n\nNational Gallery, entrance hall dome. Photo: Diego Delso, CC BY-SA 4.0, via Wikimedia Commons.\n\n\n\nA turret and weathervane of the White Tower at the Tower of London\n\n\nTower of London, the White Tower. Photo: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons."
+  },
+  {
+    "objectID": "london.html#sights-at-a-glance",
+    "href": "london.html#sights-at-a-glance",
+    "title": "Visit London",
+    "section": "Sights at a glance",
+    "text": "Sights at a glance\n\n\n\nPhoto\nSight\nArea\nPrice band\nNearest tube\nMore\n\n\n\n\n\nBritish Museum\nBloomsbury\nFree (special exhibitions extra)\nTottenham Court Road\nRead more\n\n\n\nNatural History Museum\nSouth Kensington\nFree (special exhibitions extra)\nSouth Kensington\nRead more\n\n\n\nTate Modern\nBankside\nFree (special exhibitions extra)\nBlackfriars\nRead more\n\n\n\nNational Gallery\nTrafalgar Square\nFree (special exhibitions extra)\nCharing Cross\nRead more\n\n\n\nTower of London\nTower Hill\nPaid ticket\nTower Hill\nRead more\n\n\n\nPhoto credits: British Museum, Mike Peel, CC BY-SA 4.0; Natural History Museum, Julian Herzog, CC BY 4.0; Tate Modern and National Gallery, Diego Delso, CC BY-SA 4.0; Tower of London, Dietmar Rabich, CC BY-SA 4.0. All via Wikimedia Commons; details in images/ATTRIBUTION.md."
+  },
+  {
+    "objectID": "london.html#visitor-numbers",
+    "href": "london.html#visitor-numbers",
+    "title": "Visit London",
+    "section": "Visitor numbers",
+    "text": "Visitor numbers\n\nimport csv\n\nwith open(\"data/attractions.csv\", newline=\"\", encoding=\"utf-8\") as f:\n    rows = list(csv.DictReader(f))\n\ntop = max(rows, key=lambda r: int(r[\"visits_2025\"]))\ntop_name = top[\"attraction\"]\ntop_visits = int(top[\"visits_2025\"])\ntotal_visits = sum(int(r[\"visits_2025\"]) for r in rows)\n\nThe most visited attraction in 2025 was the Natural History Museum (South Kensington), with 7,116,929 visits, out of 39,692,434 visits in total across the ten attractions listed.\n\n\n\n\n\n\n\n\nFigure 1: Visits in 2025 to London’s ten most-visited ALVA attractions. Source: ALVA."
+  },
+  {
+    "objectID": "london.html#getting-around",
+    "href": "london.html#getting-around",
+    "title": "Visit London",
+    "section": "Getting around",
+    "text": "Getting around\n\n🚇 Tube\n🚌 Bus\n🚲 Santander Cycles"
+  },
+  {
+    "objectID": "london.html#plan-your-visit",
+    "href": "london.html#plan-your-visit",
+    "title": "Visit London",
+    "section": "Plan your visit",
+    "text": "Plan your visit\nUse the TfL Journey Planner to map out each day’s route by Tube, bus or bike.\n\n\n\nBig Ben and the Elizabeth Tower rising against a bright sky, with the Palace of Westminster below\n\n\nBig Ben in the sun (Elizabeth Tower). Photo: John Dillenbeck, CC0, via Wikimedia Commons.\n\nTip from a local: Stand on the right on Tube escalators and leave the left side clear for people in a hurry."
+  },
+  {
+    "objectID": "london.html#before-you-go",
+    "href": "london.html#before-you-go",
+    "title": "Visit London",
+    "section": "Before you go",
+    "text": "Before you go\n[ ] Check opening times and book any timed tickets\n[ ] Bring a contactless card or Oyster for the Tube and buses\n[ ] Pack a light waterproof jacket"
+  }
+]
