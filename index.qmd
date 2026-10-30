@@ -1,0 +1,12 @@
+---
+title: "Visit London"
+toc: false
+---
+
+Welcome to London, a city where **centuries of history** sit side by side with modern life.
+
+- [**Guide**](london.qmd): five sights to start with, how to get around, and what to pack.
+- [**Dashboard**](london-dashboard.qmd): visitor numbers for London's most-visited attractions, 2015–2025.
+- **Downloads**: the guide as [Word](london.docx), [PDF](london.pdf), [PowerPoint](london.pptx), [EPUB](london.epub) and [slides](london-slides.html), also in the Downloads menu above.
+
+Visitor numbers are from the Association of Leading Visitor Attractions (ALVA).

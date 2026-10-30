@@ -1,0 +1,165 @@
+---
+title: "Visit London dashboard"
+subtitle: "Visitor numbers from ALVA, 2015–2025"
+format: dashboard
+jupyter: python3
+---
+
+```{=html}
+<style>
+.value-box-value { font-size: 2rem !important; line-height: 1.15; }
+.modebar-container { display: none !important; }
+.card-footer, .card-footer p { font-size: 0.8rem; color: #52514e; }
+</style>
+```
+
+```{python}
+#| include: false
+import pandas as pd
+import plotly.graph_objects as go
+
+INK, MUTED, GRID = "#0b0b0b", "#52514e", "#e6e5e1"
+BLUE, ORANGE = "#2a78d6", "#eb6834"
+# one colour per attraction, fixed so a series never changes colour
+ENTITY = {
+    "British Museum": "#2a78d6",
+    "National Gallery": "#eb6834",
+    "Natural History Museum": "#1baf7a",
+    "Tate Modern": "#eda100",
+    "Tower of London": "#e87ba4",
+}
+BASE = dict(
+    font=dict(family="system-ui, -apple-system, 'Segoe UI', sans-serif", size=13, color=MUTED),
+    plot_bgcolor="rgba(0,0,0,0)",
+    paper_bgcolor="rgba(0,0,0,0)",
+    hoverlabel=dict(bgcolor="white", font_color=INK, bordercolor=GRID),
+)
+
+attractions = pd.read_csv("data/attractions.csv")
+visits = pd.read_csv("data/visits.csv")
+
+def short(name):
+    return name.split(" (")[0].removeprefix("The ")
+
+attractions["name"] = attractions["attraction"].map(short)
+attractions["free"] = attractions["admission"].str.startswith("Free")
+top = attractions.loc[attractions["visits_2025"].idxmax()]
+total_visits = attractions["visits_2025"].sum()
+free_count = int(attractions["free"].sum())
+
+pivot = visits.pivot(index="attraction", columns="year", values="visits")
+change = ((pivot[2025] / pivot[2019] - 1) * 100).sort_values()
+```
+
+## Row {height=22%}
+
+```{python}
+#| content: valuebox
+#| title: "Top attraction, 2025"
+dict(icon="trophy", color="primary", value=top["name"])
+```
+
+```{python}
+#| content: valuebox
+#| title: "Total visits, top 10 in 2025"
+dict(icon="people", color="secondary", value=f"{total_visits / 1e6:.1f}M")
+```
+
+```{python}
+#| content: valuebox
+#| title: "Free to enter (of top 10)"
+dict(icon="ticket-perforated", color="success", value=f"{free_count} of {len(attractions)}")
+```
+
+## Row {height=42%}
+
+```{python}
+#| title: "Most-visited London attractions, 2025"
+ranked = attractions.sort_values("visits_2025")
+fig = go.Figure(layout=dict(
+    **BASE,
+    barmode="overlay",
+    bargap=0.35,
+    xaxis=dict(range=[0, 8.4], showgrid=True, gridcolor=GRID, zeroline=False,
+               title="Visits (millions)", ticksuffix="M"),
+    yaxis=dict(automargin=True, categoryorder="array", categoryarray=list(ranked["name"])),
+    legend=dict(orientation="h", x=1, xanchor="right", y=1.02, yanchor="bottom", entrywidth=120),
+    margin=dict(l=10, r=10, t=40, b=10),
+))
+for is_free, label, color in [(True, "Free entry", BLUE), (False, "Paid or other", ORANGE)]:
+    d = ranked[ranked["free"] == is_free]
+    _ = fig.add_bar(
+        x=d["visits_2025"] / 1e6,
+        y=d["name"],
+        orientation="h",
+        name=label,
+        marker_color=color,
+        hovertemplate="%{y}<br>%{x:.2f}M visits<extra>" + label + "</extra>",
+    )
+for _, r in ranked.iterrows():
+    _ = fig.add_annotation(x=r["visits_2025"] / 1e6, y=r["name"], text=f"{r['visits_2025'] / 1e6:.1f}M",
+                           showarrow=False, xanchor="left", xshift=6, font=dict(color=INK, size=12))
+fig
+```
+
+```{python}
+#| title: "Visits by year, 2015–2025"
+fig = go.Figure(layout=dict(
+    **BASE,
+    xaxis=dict(dtick=1, showgrid=False, range=[2014.7, 2026.9]),
+    yaxis=dict(title="Visits (millions)", rangemode="tozero", showgrid=True,
+               gridcolor=GRID, zeroline=False),
+    legend=dict(orientation="h", y=-0.2, entrywidth=175),
+    hovermode="x unified",
+    margin=dict(l=10, r=10, t=10, b=10),
+    shapes=[dict(type="rect", xref="x", yref="paper", x0=2019.6, x1=2021.4, y0=0, y1=1,
+                 fillcolor="rgba(120,120,110,0.10)", line_width=0, layer="below")],
+    annotations=[dict(x=2020.5, y=1, yref="paper", text="COVID-19", showarrow=False,
+                      font=dict(size=11, color=MUTED), yanchor="top")],
+))
+for name, color in ENTITY.items():
+    g = visits[visits["attraction"] == name].sort_values("year")
+    _ = fig.add_scatter(
+        x=g["year"], y=g["visits"] / 1e6, name=name, mode="lines+markers",
+        line=dict(color=color, width=2),
+        marker=dict(size=8, color=color, line=dict(color="white", width=2)),
+        hovertemplate="%{y:.2f}M",
+    )
+# end-of-line labels, pushed apart so they never overlap
+ends = sorted(((visits[(visits["attraction"] == n) & (visits["year"] == 2025)]["visits"].iloc[0] / 1e6, n) for n in ENTITY), reverse=True)
+ypos, prev = {}, None
+for val, n in ends:
+    ypos[n] = val if prev is None else min(val, prev - 0.55)
+    prev = ypos[n]
+for n in ENTITY:
+    _ = fig.add_annotation(x=2025, y=ypos[n], text=n.replace("Natural History Museum", "Natural History"),
+                           showarrow=False, xanchor="left", xshift=8, font=dict(size=11, color=INK))
+fig
+```
+
+## Row {height=36%}
+
+```{python}
+#| title: "Recovery: 2025 visits vs 2019 (pre-COVID)"
+#| footer: "Natural History Museum counts include its gardens from 2024, so its rise is not like-for-like. Source: ALVA."
+fig = go.Figure(
+    go.Bar(
+        x=change.index,
+        y=change.values,
+        marker_color=[BLUE if v >= 0 else ORANGE for v in change.values],
+        hovertemplate="%{x}<br>%{y:+.1f}% vs 2019<extra></extra>",
+    ),
+    layout=dict(
+        **BASE,
+        bargap=0.5,
+        xaxis=dict(showgrid=False, zeroline=False),
+        yaxis=dict(title="Change since 2019", ticksuffix="%", range=[-42, 42],
+                   showgrid=True, gridcolor=GRID, zeroline=True, zerolinecolor=MUTED),
+        margin=dict(l=10, r=10, t=10, b=10),
+    ),
+)
+for n, v in change.items():
+    _ = fig.add_annotation(x=n, y=v, text=f"{v:+.0f}%", showarrow=False, yshift=12 if v >= 0 else -12,
+                           font=dict(color=INK, size=13))
+fig
+```

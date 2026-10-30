@@ -1,0 +1,46 @@
+---
+title: "Visit London"
+format:
+  typst:
+    papersize: a5
+    margin:
+      x: 1.2cm
+      y: 1.2cm
+    fontsize: 9pt
+---
+
+```{=typst}
+#set par(justify: false)
+#grid(
+  columns: (3.6cm, 1fr),
+  column-gutter: 0.5cm,
+  [
+    #figure(
+      image("images/big-ben.jpg", width: 100%, alt: "Big Ben and the Elizabeth Tower rising against a bright sky, with the Palace of Westminster below"),
+      caption: [Big Ben in the sun. Photo: John Dillenbeck, CC0, via Wikimedia Commons.],
+      supplement: none,
+      numbering: none,
+    )
+  ],
+  [
+    #text(size: 9pt)[Five sights to start with. Most are free to enter; special exhibitions cost extra.]
+    #v(0.3cm)
+    #table(
+      columns: (1.15fr, 1fr, 1fr),
+      inset: 4pt,
+      stroke: (x: none, y: 0.4pt + luma(180)),
+      table.header([*Sight*], [*Price band*], [*Nearest tube*]),
+      [British Museum], [Free], [Tottenham Court Road],
+      [Natural History Museum], [Free], [South Kensington],
+      [Tate Modern], [Free], [Blackfriars],
+      [National Gallery], [Free], [Charing Cross],
+      [Tower of London], [Paid ticket], [Tower Hill],
+    )
+    #v(0.4cm)
+    #block(
+      fill: luma(240), inset: 8pt, radius: 3pt, width: 100%,
+      [*Tip from a local:* Stand on the right on Tube escalators and leave the left side clear for people in a hurry.],
+    )
+  ],
+)
+```

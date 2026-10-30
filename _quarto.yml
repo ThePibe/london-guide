@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+
+website:
+  title: "Visit London"
+  navbar:
+    left:
+      - text: Guide
+        href: london.qmd
+      - text: Dashboard
+        href: london-dashboard.qmd
+      - text: Downloads
+        menu:
+          - text: Word (.docx)
+            href: london.docx
+          - text: PDF
+            href: london.pdf
+          - text: PowerPoint (.pptx)
+            href: london.pptx
+          - text: EPUB
+            href: london.epub
+          - text: Slides (HTML)
+            href: london-slides.html
+
+format:
+  html:
+    theme: cosmo
+    toc: true
